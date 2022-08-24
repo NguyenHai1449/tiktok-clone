@@ -1,18 +1,22 @@
+import { Job } from '../../../types/interface';
+import ToDoItem from '../Item';
+import styles from './index.module.css';
+
 interface ToDoListProps {
-    jobs: string[];
+    jobs: Job[];
 }
 
 const ToDoList = ({ jobs }: ToDoListProps) => {
     return (
         <>
             {jobs && jobs.length ? (
-                <ul className="w-full text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 divide-y">
+                <div
+                    className={`w-full text-sm font-medium text-gray-900 bg-white rounded-lg space-y-5 overflow-y-auto h-[500px] ${styles.scrollbar}`}
+                >
                     {jobs.map((job, index) => (
-                        <li key={index} className="py-2 px-4 w-full">
-                            {job}
-                        </li>
+                        <ToDoItem key={index} index={index} item={job} />
                     ))}
-                </ul>
+                </div>
             ) : null}
         </>
     );

@@ -3,7 +3,7 @@ import React from 'react';
 import gov from '../../assets/img/bo-cong-thuong.png';
 import { publicRoutes } from '../../routes';
 import { infos, policys } from './dummy';
-const Footer = () => {
+const Footer: React.FC = () => {
     return (
         <footer className="p-4 bg-gray text-white sm:p-6 dark:bg-gray-900">
             <div className="container mx-auto">
@@ -22,7 +22,13 @@ const Footer = () => {
                             </h2>
                             <ul className="text-gray-600 dark:text-gray-400">
                                 {publicRoutes.map((link, index) => {
-                                    return <li key={index}>{link.name}</li>;
+                                    return (
+                                        <li key={index}>
+                                            <a href="" className="hover:underline">
+                                                {link.name}
+                                            </a>
+                                        </li>
+                                    );
                                 })}
                             </ul>
                         </div>
