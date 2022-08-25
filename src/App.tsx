@@ -6,20 +6,13 @@ import { publicRoutes } from './routes';
 
 const App: React.FC = () => {
     return (
-        <div className="container mx-auto">
-            <ToDo />
-        </div>
-        // <BrowserRouter>
-        //     <Routes>
-        //         <Route path="/" element={<DefaultLayout />}>
-        //             <Route index element={<Home />}></Route>;
-        //             {publicRoutes.map((route, index) => {
-        //                 const Page = route.component;
-        //                 return <Route key={index} path={route.path} element={<Page />}></Route>;
-        //             })}
-        //         </Route>
-        //     </Routes>
-        // </BrowserRouter>
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<DefaultLayout />}>
+                    <Route index element={<Home />}></Route>;
+                </Route>
+            </Routes>
+        </BrowserRouter>
     );
 };
 

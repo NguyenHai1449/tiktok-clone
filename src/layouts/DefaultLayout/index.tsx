@@ -1,7 +1,6 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import Footer from '../../components/Footer';
-import Header from '../../components/Header';
+import Header from '../../components/Header/Header';
 
 const DefaultLayout: React.FC = () => {
     return (
@@ -10,7 +9,6 @@ const DefaultLayout: React.FC = () => {
             <main className="main-content bg-white-800 dark:bg-gray-800 transition duration-100">
                 <Outlet />
             </main>
-            <Footer />
         </div>
     );
 };

@@ -6,8 +6,14 @@ module.exports = {
     theme: {
         colors: {
             ...colors,
-            gray: '#1D1D1F',
+            gray: {
+                900: '#161823',
+            },
             white: '#fff',
+            red: {
+                100: '#fe2c55',
+                200: '#EE1D52',
+            },
         },
         fontSize: {
             xs: '1.2rem',
