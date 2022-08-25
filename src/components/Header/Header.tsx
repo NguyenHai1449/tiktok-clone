@@ -1,10 +1,11 @@
 import React from 'react';
-import SearchInput from './SearchInput/SearchInput';
-import { AiOutlinePlus } from 'react-icons/ai';
+import SearchInput from '../SearchInput/SearchInput';
 import logo from '../../assets/img/tiktok-logo.png';
 import Button from '../Button/Button';
 
 const Header: React.FC = () => {
+    //props
+    const props = { id: 'button1' };
     return (
         <div className="border-b">
             <div className="container mx-auto">
@@ -14,8 +15,13 @@ const Header: React.FC = () => {
                     </div>
                     <SearchInput />
                     <div className="flex gap-10">
-                        <Button label="Tải lên" className="border py-2.5 px-5" />
                         <Button
+                            icon="AiOutlinePlus"
+                            label="Tải lên"
+                            className="border py-2.5 px-5 rounded-md"
+                        />
+                        <Button
+                            {...props}
                             label="Đăng nhập"
                             className="border py-2.5 px-5 bg-red-200 text-white rounded-md"
                         />
