@@ -1,6 +1,6 @@
 import React from 'react';
 import { BsSearch } from 'react-icons/bs';
-const SearchInput: React.FC = () => {
+const SearchFrom: React.FC = () => {
     return (
         <form className="flex items-center gap-4 rounded-full bg-gray-900 bg-opacity-5 text-black px-4">
             <input
@@ -14,4 +14,4 @@ const SearchInput: React.FC = () => {
     );
 };
 
-export default SearchInput;
+export default SearchFrom;

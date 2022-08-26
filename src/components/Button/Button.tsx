@@ -2,18 +2,19 @@ import React from 'react';
 import { clsx } from 'clsx';
 
 interface Props {
-    label: string;
+    text: string;
     type?: 'button' | 'submit';
-    icon?: string;
+    Icon?: any;
     className?: string;
+    onClick?: () => void;
 }
 
-const Button: React.FC<Props> = ({ type = 'button', label, className, icon, ...props }) => {
+const Button: React.FC<Props> = ({ type = 'button', text, className, Icon, ...props }) => {
     return (
         <>
             <button {...props} type={type} className={clsx('flex items-center gap-3', className)}>
-                <span>{label}</span>
-                <span></span>
+                {Icon && <Icon />}
+                <span>{text}</span>
             </button>
         </>
     );

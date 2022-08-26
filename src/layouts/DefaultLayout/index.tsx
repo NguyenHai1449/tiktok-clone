@@ -1,13 +1,20 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import Header from '../../components/Header/Header';
+import styles from './DefaultLayout.module.css';
+import SideBar from '../../components/SideBar/SideBar';
+import classNames from 'classnames/bind';
+const cx = classNames.bind(styles);
 
 const DefaultLayout: React.FC = () => {
     return (
-        <div>
+        <div className={cx('wrapper')}>
             <Header />
-            <main className="main-content bg-white-800 dark:bg-gray-800 transition duration-100">
-                <Outlet />
+            <main className={cx('container')}>
+                <SideBar />
+                <div className={cx('content')}>
+                    <Outlet />
+                </div>
             </main>
         </div>
     );
