@@ -1,13 +1,12 @@
 import React from 'react';
-import { AiFillHome, AiOutlineUsergroupAdd, AiOutlineVideoCamera } from 'react-icons/ai';
 import MenuItem from '../MenuItem/MenuItem';
-
+import { HomeIcon, UsersIcon, LiveIcon } from '../Icons/icons';
 const Menu: React.FC = () => {
     return (
-        <nav>
-            <MenuItem title="For You" Icon={AiFillHome} to="foryou" />
-            <MenuItem title="Following" Icon={AiOutlineUsergroupAdd} to="following" />
-            <MenuItem title="LIVE" Icon={AiOutlineVideoCamera} to="live" />
+        <nav className="py-8 pl-3">
+            <MenuItem title="For You" icon={<HomeIcon />} to="/" />
+            <MenuItem title="Following" icon={<UsersIcon />} to="following" />
+            <MenuItem title="LIVE" icon={<LiveIcon />} to="live" />
         </nav>
     );
 };

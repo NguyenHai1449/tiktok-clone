@@ -2,10 +2,10 @@ import React from 'react';
 import SearchFrom from '../SearchFrom/SearchFrom';
 import logo from '../../assets/img/tiktok-logo.png';
 import Button from '../Button/Button';
-import { FaPlus } from 'react-icons/fa';
 import Dropdown from '../Dropdown/Dropdown';
 import styles from './Header.module.css';
 import classNames from 'classnames/bind';
+import { PlusIcon } from '../Icons/icons';
 const cx = classNames.bind(styles);
 
 const Header: React.FC = () => {
@@ -22,7 +22,7 @@ const Header: React.FC = () => {
                     <SearchFrom />
                     <div className="flex gap-10">
                         <Button
-                            Icon={FaPlus}
+                            Icon={PlusIcon}
                             text="Tải lên"
                             className="border py-2.5 px-5 rounded-md"
                         />

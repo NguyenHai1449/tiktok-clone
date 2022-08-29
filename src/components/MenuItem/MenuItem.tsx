@@ -1,16 +1,18 @@
 import React from 'react';
-import { IconType } from 'react-icons';
 import { NavLink } from 'react-router-dom';
+import classNames from 'classnames/bind';
+import styles from './MenuItem.module.css';
+const cx = classNames.bind(styles);
 interface Props {
     title: string;
     to: string;
-    Icon: IconType;
+    icon: React.ReactNode;
 }
-const MenuItem: React.FC<Props> = ({ title, to, Icon }) => {
+const MenuItem: React.FC<Props> = ({ title, to, icon }) => {
     return (
-        <NavLink className="flex items-center gap-3" to={to}>
-            <Icon />
-            <span>{title}</span>
+        <NavLink className={nav => cx('menu-item', { active: nav.isActive })} to={to}>
+            {icon}
+            <span className="ml-3">{title}</span>
         </NavLink>
     );
 };
