@@ -15,3 +15,15 @@
 .menu-item.active {
     color: rgba(254, 44, 85, 1);
 }
+
+.menu-item.active > .icon {
+    display: none;
+}
+
+.menu-item.active > .active-icon {
+    display: flex;
+}
+
+.active-icon {
+    display: none;
+}

@@ -1,12 +1,32 @@
 import React from 'react';
+
 import MenuItem from '../MenuItem/MenuItem';
-import { HomeIcon, UsersIcon, LiveIcon } from '../Icons/icons';
+import {
+    HomeIcon,
+    UsersIcon,
+    LiveIcon,
+    HomeActiveIcon,
+    LiveActiveIcon,
+    UsersActiveIcon,
+} from '../Icons/icons';
 const Menu: React.FC = () => {
     return (
-        <nav className="py-8 pl-3">
-            <MenuItem title="For You" icon={<HomeIcon />} to="/" />
-            <MenuItem title="Following" icon={<UsersIcon />} to="following" />
-            <MenuItem title="LIVE" icon={<LiveIcon />} to="live" />
+        <nav className="py-8">
+            <MenuItem
+                title="For You"
+                icons={{ icon: <HomeIcon />, activeIcon: <HomeActiveIcon /> }}
+                to="/"
+            />
+            <MenuItem
+                title="Following"
+                icons={{ icon: <UsersIcon />, activeIcon: <UsersActiveIcon /> }}
+                to="following"
+            />
+            <MenuItem
+                title="LIVE"
+                icons={{ icon: <LiveIcon />, activeIcon: <LiveActiveIcon /> }}
+                to="live"
+            />
         </nav>
     );
 };

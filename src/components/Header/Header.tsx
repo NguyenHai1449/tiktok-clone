@@ -1,10 +1,11 @@
 import React from 'react';
+import classNames from 'classnames/bind';
+
 import SearchFrom from '../SearchFrom/SearchFrom';
 import logo from '../../assets/img/tiktok-logo.png';
 import Button from '../Button/Button';
 import Dropdown from '../Dropdown/Dropdown';
 import styles from './Header.module.css';
-import classNames from 'classnames/bind';
 import { PlusIcon } from '../Icons/icons';
 const cx = classNames.bind(styles);
 

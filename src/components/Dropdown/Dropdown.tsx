@@ -1,10 +1,10 @@
 import React from 'react';
-import { FiMoreVertical } from 'react-icons/fi';
+import { MoreIcon } from '../Icons/icons';
 const SeeMore: React.FC = () => {
     return (
-        <div className="flex items-center">
-            <FiMoreVertical />
-        </div>
+        <button className="flex items-center">
+            <MoreIcon />
+        </button>
     );
 };
 

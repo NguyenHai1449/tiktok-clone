@@ -1,0 +1,32 @@
+.account-item {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    overflow: hidden;
+    object-fit: cover;
+}
+
+.item-info {
+    margin-left: 12px;
+    flex: 1;
+}
+
+.item-info .nickname {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.6rem;
+    color: #161823;
+}
+
+.item-info .name {
+    font-size: 1.2rem;
+    line-height: 1;
+}

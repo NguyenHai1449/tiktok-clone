@@ -2,7 +2,7 @@ import React from 'react';
 
 const Home: React.FC = () => {
     return (
-        <div className="border-l">
+        <div>
             <h1 className="text-3xl uppercase">Home page</h1>
         </div>
     );
