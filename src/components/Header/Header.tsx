@@ -4,7 +4,7 @@ import classNames from 'classnames/bind';
 import SearchFrom from '../SearchFrom/SearchFrom';
 import logo from '../../assets/img/tiktok-logo.png';
 import Button from '../Button/Button';
-import Dropdown from '../Dropdown/Dropdown';
+import SeeMore from '../SeeMore/SeeMore';
 import styles from './Header.module.css';
 import { PlusIcon } from '../Icons/icons';
 const cx = classNames.bind(styles);
@@ -33,7 +33,7 @@ const Header: React.FC = () => {
                             className="border py-2.5 px-5 bg-red-200 text-white rounded-md"
                         />
 
-                        <Dropdown />
+                        <SeeMore />
                     </div>
                 </div>
             </div>
