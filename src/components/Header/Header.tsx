@@ -8,11 +8,15 @@ import SeeMore from '../SeeMore/SeeMore';
 import styles from './Header.module.css';
 import { PlusIcon } from '../Icons/icons';
 import Modal from '../Modal/Modal';
+import LoginOptions from '../LoginOptions/LoginOptions';
 const cx = classNames.bind(styles);
 
 const Header: React.FC = () => {
     const [showModal, setShowModal] = useState(false);
+    const [isLogin, setIsLogin] = useState(false);
+
     const handleShowModal = () => {
+        setIsLogin(true);
         setShowModal(true);
     };
     //props
@@ -40,22 +44,61 @@ const Header: React.FC = () => {
 
                         {showModal && (
                             <Modal>
-                                <div
-                                    style={{
-                                        height: '200px',
-                                        width: '200px',
-                                        background: 'rgba(0,0,0,0.1)',
-                                        zIndex: 999,
-                                    }}
-                                >
-                                    I'm a modal!{' '}
-                                    <button
-                                        style={{ background: 'papyawhip' }}
-                                        onClick={() => setShowModal(false)}
-                                    >
-                                        close
-                                    </button>
-                                </div>
+                                {isLogin ? (
+                                    <>
+                                        <div className="flex items-center justify-end">
+                                            <button
+                                                type="button"
+                                                onClick={() => setShowModal(false)}
+                                                className="w-12 h-12 text-warmGray-800 bg-warmGray-300 text-2xl rounded-full flex items-center justify-center"
+                                            >
+                                                &times;
+                                            </button>
+                                        </div>
+                                        <div className="flex items-center justify-center text-3xl py-7 font-bold">
+                                            Đăng nhập vào TikTok
+                                        </div>
+
+                                        <LoginOptions></LoginOptions>
+
+                                        <div className="flex items-center justify-center">
+                                            <h3>Bạn không có tài khoản? </h3>
+                                            <span
+                                                className="cursor-pointer text-red-200 hover:underline"
+                                                onClick={() => setIsLogin(false)}
+                                            >
+                                                Đăng ký
+                                            </span>
+                                        </div>
+                                    </>
+                                ) : (
+                                    <>
+                                        <div className="flex items-center justify-end">
+                                            <button
+                                                onClick={() => setShowModal(false)}
+                                                type="button"
+                                                className="w-12 h-12 text-warmGray-800 bg-warmGray-300 text-2xl rounded-full flex items-center justify-center"
+                                            >
+                                                &times;
+                                            </button>
+                                        </div>
+                                        <div className="flex items-center justify-center text-3xl py-7 font-bold">
+                                            Đăng ký TikTok
+                                        </div>
+
+                                        <LoginOptions></LoginOptions>
+
+                                        <div className="flex items-center justify-center">
+                                            <h3>Bạn đã có tài khoản? </h3>
+                                            <span
+                                                className="cursor-pointer text-red-200 hover:underline"
+                                                onClick={() => setIsLogin(true)}
+                                            >
+                                                Đăng nhập
+                                            </span>
+                                        </div>
+                                    </>
+                                )}
                             </Modal>
                         )}
 

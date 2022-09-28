@@ -1,10 +1,9 @@
 import React from 'react';
-import LoginForm from '../../components/LoginForm/LoginForm';
 
 const Following = () => {
     return (
         <div>
-            <LoginForm></LoginForm>
+            <h1 className="text-3xl uppercase">Following page</h1>
         </div>
     );
 };

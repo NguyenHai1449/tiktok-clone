@@ -4,11 +4,13 @@ import classNames from 'classnames/bind';
 import styles from './AccountItem.module.css';
 import { CheckIcon } from '../Icons/icons';
 const cx = classNames.bind(styles);
+
 interface Props {
     src: string;
     nickname: string;
     name: string;
 }
+
 const AccountItem: React.FC<Props> = ({ src, nickname, name }) => {
     return (
         <div className={cx('account-item')}>

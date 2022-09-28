@@ -15,17 +15,13 @@ const SuggestedAccounts: React.FC<Props> = ({ label }) => {
             <AccountItem
                 name="Theanh28 entertainment"
                 nickname="theanh28entertainment"
-                src="https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-aiso/65d3c6b1d1e205c75536ccf1f26d552d~c5_100x100.jpeg?x-expires=1664334000&x-signature=yZyFg0VycBpnT3usChRnNkvcKvs%3D"
+                src="https://picsum.photos/200/300"
             />
-            <AccountItem
-                name="Tiin.vn"
-                nickname="tiin.vn"
-                src="https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-aiso/65d3c6b1d1e205c75536ccf1f26d552d~c5_100x100.jpeg?x-expires=1664334000&x-signature=yZyFg0VycBpnT3usChRnNkvcKvs%3D"
-            />
+            <AccountItem name="Tiin.vn" nickname="tiin.vn" src="https://picsum.photos/200/300" />
             <AccountItem
                 name="🔥Đạt Villa🔥"
                 nickname="datvilla94"
-                src="https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-aiso/65d3c6b1d1e205c75536ccf1f26d552d~c5_100x100.jpeg?x-expires=1664334000&x-signature=yZyFg0VycBpnT3usChRnNkvcKvs%3D"
+                src="https://picsum.photos/200/300"
             />
 
             <p className={cx('more-btn')}>See All</p>

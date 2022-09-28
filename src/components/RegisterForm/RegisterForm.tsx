@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+
 enum GenderEnum {
     female = 'female',
     male = 'male',
@@ -25,7 +26,7 @@ const schema = yup
     })
     .required();
 
-const LoginForm = () => {
+const RegisterForm = () => {
     const {
         register,
         handleSubmit,
@@ -39,7 +40,7 @@ const LoginForm = () => {
     };
 
     return (
-        <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
+        <form className=" w-full" onSubmit={handleSubmit(onSubmit)}>
             {/* register your input into the hook by invoking the "register" function */}
             <div className="my-5">
                 <label htmlFor="first_name" className="mb-2 text-sm font-medium text-gray-900">
@@ -101,9 +102,10 @@ const LoginForm = () => {
             <input
                 className="text-white bg-blue-700 font-medium rounded-lg text-sm w-full sm:w-auto px-10 py-2.5 text-center cursor-pointer"
                 type="submit"
+                value="Tiếp"
             />
         </form>
     );
 };
 
-export default LoginForm;
+export default RegisterForm;
