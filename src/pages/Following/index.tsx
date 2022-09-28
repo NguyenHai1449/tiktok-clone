@@ -1,9 +1,10 @@
 import React from 'react';
+import LoginForm from '../../components/LoginForm/LoginForm';
 
-const Following: React.FC = () => {
+const Following = () => {
     return (
-        <div className="border-l">
-            <h1 className="text-3xl uppercase">Following page</h1>
+        <div>
+            <LoginForm></LoginForm>
         </div>
     );
 };
