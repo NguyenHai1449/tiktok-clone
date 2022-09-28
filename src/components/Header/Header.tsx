@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import classNames from 'classnames/bind';
 
 import SearchFrom from '../SearchFrom/SearchFrom';
@@ -7,11 +7,16 @@ import Button from '../Button/Button';
 import SeeMore from '../SeeMore/SeeMore';
 import styles from './Header.module.css';
 import { PlusIcon } from '../Icons/icons';
+import Modal from '../Modal/Modal';
 const cx = classNames.bind(styles);
 
 const Header: React.FC = () => {
+    const [showModal, setShowModal] = useState(false);
+    const handleShowModal = () => {
+        setShowModal(true);
+    };
     //props
-    const props = { id: 'button1' };
+    const props = { id: 'button1', onClick: handleShowModal };
 
     return (
         <header className={cx('wrapper')}>
@@ -32,6 +37,27 @@ const Header: React.FC = () => {
                             text="Đăng nhập"
                             className="border py-2.5 px-5 bg-red-200 text-white rounded-md"
                         />
+
+                        {showModal && (
+                            <Modal>
+                                <div
+                                    style={{
+                                        height: '200px',
+                                        width: '200px',
+                                        background: 'rgba(0,0,0,0.1)',
+                                        zIndex: 999,
+                                    }}
+                                >
+                                    I'm a modal!{' '}
+                                    <button
+                                        style={{ background: 'papyawhip' }}
+                                        onClick={() => setShowModal(false)}
+                                    >
+                                        close
+                                    </button>
+                                </div>
+                            </Modal>
+                        )}
 
                         <SeeMore />
                     </div>
