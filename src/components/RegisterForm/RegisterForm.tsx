@@ -1,5 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { IoMdArrowDropdown } from 'react-icons/io';
 import * as yup from 'yup';
 
 enum GenderEnum {
@@ -9,9 +10,9 @@ enum GenderEnum {
 }
 
 interface IFormInput {
-    firstName: string;
-    LastName: string;
-    gender: GenderEnum;
+    month: string;
+    day: string;
+    year: GenderEnum;
     age: number;
     remember: boolean;
 }
@@ -43,48 +44,28 @@ const RegisterForm = () => {
         <form className=" w-full" onSubmit={handleSubmit(onSubmit)}>
             {/* register your input into the hook by invoking the "register" function */}
             <div className="my-5">
-                <label htmlFor="first_name" className="mb-2 text-sm font-medium text-gray-900">
-                    First Name
-                </label>
-                <input
-                    id="first_name"
-                    className="block w-full py-2 border rounded-md"
-                    {...register('firstName')}
-                />
-
-                {/* errors will return when field validation fails  */}
-                <span className="text-red-100">{errors.firstName?.message}</span>
-            </div>
-
-            <div className="my-5">
-                <label htmlFor="last_name" className="mb-2 text-sm font-medium text-gray-900">
-                    Last Name
-                </label>
-                <input
-                    id="last_name"
-                    className="block w-full py-2 border rounded-md"
-                    {...register('LastName')}
-                />
-
-                {/* errors will return when field validation fails  */}
-                <span className="text-red-100">{errors.LastName?.message}</span>
-            </div>
-
-            {/* include validation with required or other standard HTML validation rules */}
-            <div className="my-5">
-                <label htmlFor="gender">Gender</label>
-                <select
-                    id="gender"
-                    className="block w-full py-3 border rounded-md"
-                    {...register('gender')}
-                >
-                    <option value="female">{GenderEnum.female}</option>
-                    <option value="male">{GenderEnum.male}</option>
-                    <option value="other">{GenderEnum.other}</option>
-                </select>
-
-                {/* errors will return when field validation fails  */}
-                <span className="text-red-100">{errors.gender?.message}</span>
+                <span>Ngày sinh của bạn là ngày nào?</span>
+                <div className="flex items-center justify-between">
+                    <div className="select-container">
+                        <div className="w-[12rem] flex items-center justify-between px-5 py-2.5 border border-gray-200">
+                            <span>Tháng</span>
+                            <IoMdArrowDropdown />
+                        </div>
+                    </div>
+                    <div className="select-container">
+                        <div className="w-[12rem] flex items-center justify-between px-5 py-2.5 border border-gray-200">
+                            <span>Ngày</span>
+                            <IoMdArrowDropdown />
+                        </div>
+                    </div>
+                    <div className="select-container">
+                        <div className="w-[12rem] flex items-center justify-between px-5 py-2.5 border border-gray-200">
+                            <span>Năm</span>
+                            <IoMdArrowDropdown />
+                        </div>
+                    </div>
+                </div>
+                <span>Ngày sinh của bạn sẽ không được hiển thị công khai</span>
             </div>
 
             <div className="my-5">

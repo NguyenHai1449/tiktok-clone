@@ -1,15 +1,12 @@
-interface LoginOptionProps {
-    Icon: any;
-    text: string;
-}
+import { LoginOption } from '../../types/interface';
 
-const LoginOption = ({ text, Icon }: LoginOptionProps) => {
+const LoginOptionItem = ({ text, Icon }: LoginOption) => {
     return (
-        <div className="border h-16 relative flex items-center justify-center px-4">
+        <div className="cursor-pointer border border-gray-200 h-16 text-base relative flex items-center justify-center px-4">
             <div className="absolute left-4">{Icon && <Icon />}</div>
             {text}
         </div>
     );
 };
 
-export default LoginOption;
+export default LoginOptionItem;
