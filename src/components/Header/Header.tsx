@@ -14,20 +14,19 @@ import RegisterForm from '../RegisterForm/RegisterForm';
 const cx = classNames.bind(styles);
 
 const Header: React.FC = () => {
-    const [isAuth, setIsAuth] = useState(false);
     const [showModal, setShowModal] = useState(false);
     const [showModalHook, setShowModalHook] = useState(false);
     const [isLogin, setIsLogin] = useState(false);
 
     const handleAuthenticated = () => {
-        if (!isAuth) {
-            setIsLogin(true);
-            setShowModal(true);
-        }
+        setIsLogin(true);
+        setShowModal(true);
     };
+
     const handleAuthenticated1 = () => {
         setShowModalHook(true);
     };
+
     //props button
     const props = { id: 'button1', onClick: handleAuthenticated };
     const props1 = { id: 'button2', onClick: handleAuthenticated1 };
