@@ -1,13 +1,22 @@
-import { useForm, Controller } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import ReactDatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import Input from '../base-ui/Input/Input';
+import Select from '../base-ui/Select/Select';
+import DatePicker from '../base-ui/DatePicker/DatePicker';
+import { ageOptions } from '../../constants/common';
 
-interface IFormInput {
+export interface IOption {
+    value: string;
+    label: string;
+}
+
+export interface IFormValues {
     firstName: string;
-    LastName: string;
+    lastName: string;
     email: string;
+    age: number;
     birthday: Date;
     password: string;
     confirmPassword: string;
@@ -16,11 +25,23 @@ interface IFormInput {
 
 const schema = yup
     .object({
-        firstName: yup.string().required('First name is a required field'),
-        LastName: yup.string().required('Last name is a required field'),
-        email: yup.string().required('Email is a required field'),
-        password: yup.string().required('Password is a required field'),
-        confirmPassword: yup.string().required('Confirm password is a required field'),
+        firstName: yup.string().required('Please enter your first name'),
+        lastName: yup.string().required('Please enter your last name'),
+        email: yup.string().email().required('Please enter your email'),
+        age: yup.number().required('Please enter your age'),
+
+        password: yup
+            .string()
+            .required('Please enter your password')
+            .matches(
+                /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
+                'Password must contain at least 8 characters, one uppercase, one number and one special case character',
+            ),
+        confirmPassword: yup
+            .string()
+            .required('Please confirm your password')
+            .oneOf([yup.ref('password'), null], "Passwords don't match."),
+        isAgree: yup.boolean().isTrue('Please agree to the terms and conditions'),
     })
     .required();
 
@@ -30,99 +51,86 @@ const RegisterForm = () => {
         control,
         handleSubmit,
         formState: { errors },
-    } = useForm<IFormInput>({
+    } = useForm<IFormValues>({
+        mode: 'all',
         resolver: yupResolver(schema),
     });
 
-    const onSubmit = (data: IFormInput) => {
+    const onSubmit = (data: IFormValues) => {
         console.log(data);
     };
 
     return (
-        <form className=" w-full" onSubmit={handleSubmit(onSubmit)}>
+        <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
             <div className="grid gap-6 md:grid-cols-2 mb-6">
                 <div>
-                    <label htmlFor="first_name">First Name</label>
-                    <input
-                        id="first_name"
-                        autoComplete="off"
-                        className="h-14 block w-full border border-gray-200"
-                        {...register('firstName')}
+                    <Input
+                        label="First Name"
+                        field="firstName"
+                        register={register}
+                        errorMessage={errors.firstName?.message}
                     />
-                    <span className="text-red-100">{errors.firstName?.message}</span>
                 </div>
                 <div>
-                    <label htmlFor="last_name">Last Name</label>
-                    <input
-                        id="last_name"
-                        autoComplete="off"
-                        className="h-14 block w-full border border-gray-200"
-                        {...register('LastName')}
+                    <Input
+                        label="Last Name"
+                        field="lastName"
+                        register={register}
+                        errorMessage={errors.lastName?.message}
                     />
-                    <span className="text-red-100">{errors.LastName?.message}</span>
                 </div>
             </div>
 
             <div className="mb-6">
-                <label htmlFor="email">Your email</label>
-                <input
-                    id="email"
-                    autoComplete="off"
-                    className="h-14 block w-full border border-gray-200"
-                    {...register('email')}
+                <Input
+                    label="Email"
+                    field="email"
+                    register={register}
+                    errorMessage={errors.email?.message}
                 />
-                <span className="text-red-100">{errors.email?.message}</span>
             </div>
 
             <div className="mb-6">
-                <label htmlFor="birthday">Birthday</label>
-                <Controller
+                <Select
+                    label="Age"
+                    name="age"
+                    control={control}
+                    options={ageOptions}
+                    errorMessage={errors.age?.message}
+                />
+            </div>
+
+            <div className="mb-6">
+                <DatePicker
+                    label="Birthday"
                     name="birthday"
                     control={control}
-                    render={({ field: { value, ...fieldProps } }) => (
-                        <ReactDatePicker
-                            {...fieldProps}
-                            placeholderText="Select date"
-                            selected={value}
-                            autoComplete="off"
-                            className="h-14 block w-full border border-gray-200"
-                        />
-                    )}
+                    errorMessage={errors.birthday?.message}
                 />
-
-                <span className="text-red-100">{errors.birthday?.message}</span>
             </div>
 
             <div className="grid gap-6 md:grid-cols-2 mb-6">
                 <div>
-                    <label htmlFor="password">Password</label>
-                    <input
-                        id="password"
-                        autoComplete="off"
-                        className="h-14 block w-full border border-gray-200"
-                        {...register('password')}
+                    <Input
+                        label="Password"
+                        field="password"
+                        register={register}
+                        errorMessage={errors.password?.message}
                     />
-                    <span className="text-red-100">{errors.password?.message}</span>
                 </div>
                 <div>
-                    <label htmlFor="confirm-password">Confirm Password</label>
-                    <input
-                        id="confirm-password"
-                        autoComplete="off"
-                        className="h-14 block w-full border border-gray-200"
-                        {...register('confirmPassword')}
+                    <Input
+                        label="Confirm Password"
+                        field="confirmPassword"
+                        register={register}
+                        errorMessage={errors.confirmPassword?.message}
                     />
-                    <span className="text-red-100">{errors.confirmPassword?.message}</span>
                 </div>
             </div>
 
             <div className="mb-6">
                 <div>
-                    <input
-                        id="remember"
-                        type="checkbox"
-                        {...register('isAgree', { required: true })}
-                    ></input>
+                    <input id="remember" type="checkbox" {...register('isAgree')}></input>
                     <label htmlFor="remember" className="ml-2 text-md font-medium text-gray-900">
                         I agree to the{' '}
                         <span className="text-blue-600 hover:underline">Terms and Conditions</span>.

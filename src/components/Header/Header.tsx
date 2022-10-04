@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import classNames from 'classnames/bind';
 import SearchFrom from '../SearchFrom/SearchFrom';
 import logo from '../../assets/img/tiktok-logo.png';
-import Button from '../Button/Button';
+import Button from '../base-ui/Button/Button';
 import SeeMore from '../SeeMore/SeeMore';
 import styles from './Header.module.css';
 import Modal from '../Modal/Modal';

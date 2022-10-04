@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
-interface Props {
+interface ButtonProps {
     text: string;
     type?: 'button' | 'submit';
     Icon?: any;
@@ -9,7 +9,7 @@ interface Props {
     onClick?: () => void;
 }
 
-const Button: React.FC<Props> = ({ type = 'button', text, className, Icon, ...props }) => {
+const Button: React.FC<ButtonProps> = ({ type = 'button', text, className, Icon, ...props }) => {
     return (
         <>
             <button
