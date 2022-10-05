@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import classNames from 'classnames/bind';
 import SearchFrom from '../SearchFrom/SearchFrom';
 import logo from '../../assets/img/tiktok-logo.png';
-import Button from '../base-ui/Button/Button';
+import Button from '../Base-ui/Button/Button';
 import SeeMore from '../SeeMore/SeeMore';
 import styles from './Header.module.css';
 import Modal from '../Modal/Modal';
@@ -72,7 +72,7 @@ const Header: React.FC = () => {
 
                                 <div className="modal-body px-5">
                                     <div className="flex items-center justify-center text-3xl py-7 font-bold">
-                                        Đăng nhập
+                                        Đăng ký
                                     </div>
                                     <div className="w-[38rem] m-auto space-y-4">
                                         <RegisterForm></RegisterForm>

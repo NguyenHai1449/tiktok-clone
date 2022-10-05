@@ -18,8 +18,15 @@ const Select = ({ name, label, control, errorMessage, options }: SelectProps) =>
             <Controller
                 name={name}
                 control={control}
-                render={({ field: { value, ...fieldProps } }) => (
-                    <ReactSelect {...fieldProps} id={name} isClearable options={options} />
+                render={({ field: { value, onChange, ...fieldProps } }) => (
+                    <ReactSelect
+                        {...fieldProps}
+                        id={name}
+                        isClearable
+                        options={options}
+                        value={options.find(val => val.value === value)}
+                        onChange={option => onChange(option ? option.value : '')}
+                    />
                 )}
             />
             <span className="text-red-100">{errorMessage}</span>

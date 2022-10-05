@@ -2,9 +2,9 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import 'react-datepicker/dist/react-datepicker.css';
-import Input from '../base-ui/Input/Input';
-import Select from '../base-ui/Select/Select';
-import DatePicker from '../base-ui/DatePicker/DatePicker';
+import Input from '../Base-ui/Input/Input';
+import Select from '../Base-ui/Select/Select';
+import DatePicker from '../Base-ui/DatePicker/DatePicker';
 import { ageOptions } from '../../constants/common';
 
 export interface IOption {
@@ -16,7 +16,7 @@ export interface IFormValues {
     firstName: string;
     lastName: string;
     email: string;
-    age: number;
+    age: string;
     birthday: Date;
     password: string;
     confirmPassword: string;
@@ -27,13 +27,21 @@ const schema = yup
     .object({
         firstName: yup.string().required('Please enter your first name'),
         lastName: yup.string().required('Please enter your last name'),
-        email: yup.string().email().required('Please enter your email'),
-        age: yup.number().required('Please enter your age'),
-
+        email: yup
+            .string()
+            .email('Please enter a valid email address')
+            .required('Please enter your email'),
+        age: yup.string().required('Please enter your age'),
+        birthday: yup
+            .date()
+            .typeError('Please enter a valid date')
+            .required('Please enter your birthday')
+            .min('1969-11-13', 'Date is too early'),
         password: yup
             .string()
             .required('Please enter your password')
             .matches(
+                // no-useless-escape
                 /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
                 'Password must contain at least 8 characters, one uppercase, one number and one special case character',
             ),
@@ -41,7 +49,6 @@ const schema = yup
             .string()
             .required('Please confirm your password')
             .oneOf([yup.ref('password'), null], "Passwords don't match."),
-        isAgree: yup.boolean().isTrue('Please agree to the terms and conditions'),
     })
     .required();
 
@@ -51,13 +58,24 @@ const RegisterForm = () => {
         control,
         handleSubmit,
         formState: { errors },
+        setError,
+        reset,
     } = useForm<IFormValues>({
         mode: 'all',
         resolver: yupResolver(schema),
     });
 
-    const onSubmit = (data: IFormValues) => {
+    const onSubmit = async (data: IFormValues) => {
         console.log(data);
+        if (!data.isAgree) {
+            setError('isAgree', {
+                type: 'custom',
+                message: 'Please agree to the terms and conditions',
+            });
+            return;
+        }
+        // await register(data);
+        reset();
     };
 
     return (
@@ -112,6 +130,7 @@ const RegisterForm = () => {
             <div className="grid gap-6 md:grid-cols-2 mb-6">
                 <div>
                     <Input
+                        type="password"
                         label="Password"
                         field="password"
                         register={register}
@@ -120,6 +139,7 @@ const RegisterForm = () => {
                 </div>
                 <div>
                     <Input
+                        type="password"
                         label="Confirm Password"
                         field="confirmPassword"
                         register={register}

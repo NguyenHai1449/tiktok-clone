@@ -1,3 +1,4 @@
+import { HTMLInputTypeAttribute } from 'react';
 import { Path, UseFormRegister } from 'react-hook-form';
 import { IFormValues } from '../../RegisterForm/RegisterForm';
 
@@ -7,14 +8,16 @@ interface InputProps {
     register: UseFormRegister<IFormValues>;
     placeholder?: string;
     errorMessage?: string;
+    type?: HTMLInputTypeAttribute;
 }
 
-const Input = ({ field, label, placeholder, register, errorMessage }: InputProps) => {
+const Input = ({ field, label, placeholder, register, errorMessage, ...props }: InputProps) => {
     return (
         <>
             <label htmlFor={field}>{label}</label>
             <input
                 id={field}
+                {...props}
                 autoComplete="off"
                 placeholder={placeholder}
                 {...register(field)}
